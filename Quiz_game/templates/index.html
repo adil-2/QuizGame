@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form id= "quizForm" action="/risultati" method="post">
+        
+        {% for domanda in domande %}
+
+            <div id="domanda-{{domanda['id']}}">
+                <p>{{ domanda["domanda"] }}</p>
+                
+
+                {% for risposta in domanda["risposte"] %}
+
+                <input type="radio" required name="risposta-{{domanda['id']}}" value="{{ loop.index }}"> {{ risposta }}<br>
+                
+                {% endfor %}
+            </div>
+            
+        {% endfor %}
+        <br>
+        <input type="submit" value="Invia">
+    </form>
+
+    <footer>
+        <p style="bottom: 10px;">Adil El Yousfi.</p>
+    </footer>
+
+</body>
+</html>
